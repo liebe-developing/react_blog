@@ -54,7 +54,7 @@ export default function WithSubnavigation() {
 
   return (
     <>
-      <Box py={4} bg={useColorModeValue("white", "gray.800")}>
+      <Box py={4} px={3} bg={useColorModeValue("white", "gray.800")}>
         <Flex
           maxW="7xl"
           mx={"auto"}
@@ -62,7 +62,7 @@ export default function WithSubnavigation() {
         >
           <Text
             className="flex items-center font-semibold gap-1"
-            fontSize={{ base: "", md: "11px" }}
+            fontSize={{ base: "8px", md: "11px" }}
           >
             <Icon as={FaBolt} color="red" />
             اخبار داغ
@@ -73,7 +73,7 @@ export default function WithSubnavigation() {
           <Text
             className="flex items-center gap-1.5"
             color={useColorModeValue("gray.600", "gray.400")}
-            fontSize={{ base: "", md: "12px" }}
+            fontSize={{ base: "7px", md: "12px" }}
           >
             <BsCalendarCheck />
             {today}
@@ -92,6 +92,7 @@ export default function WithSubnavigation() {
         w={"full"}
       >
         <Flex
+          px={3}
           bg={useColorModeValue("white", "gray.800")}
           color={useColorModeValue("gray.600", "white")}
           minH={"60px"}
@@ -141,10 +142,12 @@ export default function WithSubnavigation() {
             </Flex>
 
             <Stack
+              display={"flex"}
+              className="items-center"
               flex={{ base: 1, md: 0 }}
               justify={"flex-end"}
               direction={"row"}
-              spacing={6}
+              spacing={2}
             >
               <DarkModeButton
                 colorMode={colorMode}
@@ -159,10 +162,12 @@ export default function WithSubnavigation() {
                 w="full"
                 fontFamily="Casablanca"
                 rounded="lg"
+                size="sm"
                 fontSize={{ base: "18px", md: "20px" }}
               >
                 ورود کاربران
               </Button>
+              ز
             </Stack>
           </Flex>
         </Flex>
@@ -293,6 +298,7 @@ const MobileNavItem = ({ label, children, href }) => {
         _hover={{
           textDecoration: "none",
         }}
+        display="flex"
       >
         <Text
           fontWeight={600}

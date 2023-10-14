@@ -16,15 +16,15 @@ const RandomPosts = () => {
       loop={true}
       breakpoints={{
         358: {
-          slidesPerView: 2,
-          spaceBetween: 0,
+          slidesPerView: 1,
+          spaceBetween: 1,
         },
         375: {
           slidesPerView: 2,
           spaceBetween: 0,
         },
         640: {
-          slidesPerView: 4,
+          slidesPerView: 3,
           spaceBetween: 0,
         },
         768: {

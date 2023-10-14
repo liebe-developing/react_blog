@@ -4,7 +4,7 @@ import { CATEGORIES } from "../constants";
 
 const Categories = () => {
   return (
-    <Flex className="flex-col items-center justify-center max-sm:px-5 max-sm:pb-[100px]" my={16} gap={8}>
+    <Flex className="flex-col items-center justify-center max-sm:px-5" my={16} gap={8}>
       <Heading fontFamily="casablanca" size="lg">
         دسته بندی ها
       </Heading>
