@@ -159,11 +159,11 @@ export default function WithSubnavigation() {
                 gap={2}
                 colorScheme="whatsapp"
                 _hover={{ opacity: "80%" }}
-                w="full"
+                w="fit-content"
                 fontFamily="Casablanca"
-                rounded="lg"
-                size="sm"
-                fontSize={{ base: "18px", md: "20px" }}
+                rounded="md"
+                size={{ base: "xs", md: "md" }}
+                fontSize={{ base: "13px", md: "23px" }}
               >
                 ورود کاربران
               </Button>

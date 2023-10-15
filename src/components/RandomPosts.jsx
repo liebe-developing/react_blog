@@ -20,7 +20,7 @@ const RandomPosts = () => {
           spaceBetween: 1,
         },
         375: {
-          slidesPerView: 2,
+          slidesPerView: 1,
           spaceBetween: 0,
         },
         640: {

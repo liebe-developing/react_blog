@@ -1,4 +1,4 @@
-import { Button, useColorMode } from "@chakra-ui/react";
+import { Button, Icon, useColorMode } from "@chakra-ui/react";
 import { BsMoonStarsFill, BsSun } from "react-icons/bs";
 
 const DarkModeButton = ({ colorMode, toggleColorMode, scrolled }) => {
@@ -8,19 +8,17 @@ const DarkModeButton = ({ colorMode, toggleColorMode, scrolled }) => {
       onClick={toggleColorMode}
       variant="unstyled"
       display="flex"
+      size="xs"
+      ml={{ base: 0, md: 4 }}
     >
       {colorMode === "light" ? (
-        <BsMoonStarsFill
-          className={scrolled ? "text-green-400" : "text-[#054949]"}
-          w={{ base: "18px", md: "22px" }}
-          h={{ base: "18px", md: "22px" }}
+        <Icon
+          as={BsMoonStarsFill}
+          color={scrolled ? "green.400" : "#054949"}
+          boxSize={{ base: 3, md: 6 }}
         />
       ) : (
-        <BsSun
-          w={{ base: "18px", md: "22px" }}
-          h={{ base: "18px", md: "22px" }}
-          className={"text-[#fbd38d]"}
-        />
+        <Icon as={BsSun} boxSize={{ base: 3, md: 6 }} color={"#fbd38d"} />
       )}
     </Button>
   );
