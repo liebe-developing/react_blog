@@ -36,7 +36,7 @@ const Register = () => {
           <Stack spacing={4} w={"full"} maxW={"lg"}>
             <Link
               to={"/login"}
-              className={`mb-14 flex items-center hover:text-[#22C35E] hover:transition hover:duration-300 hover:ease-in-out ${useColorModeValue(
+              className={`mb-5 flex items-center hover:text-[#22C35E] hover:transition hover:duration-300 hover:ease-in-out ${useColorModeValue(
                 "text-gray-600",
                 "text-gray-400"
               )} text-sm`}
@@ -44,7 +44,7 @@ const Register = () => {
               <BsArrowRightShort className="w-5 h-5" />
               بازگشت
             </Link>
-            <Flex className="items-center w-full justify-between mb-10">
+            <Flex className="items-center w-full justify-between mb-5">
               <Heading
                 fontSize={{ base: "2xl", md: "4xl" }}
                 fontFamily="casablanca"
