@@ -8,7 +8,7 @@ import {
 
 const Home = () => {
   return (
-    <Box my={4}>
+    <Box>
       <RandomPosts />
       <Categories />
       {/* <RecentPosts /> */}

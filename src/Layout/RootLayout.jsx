@@ -1,15 +1,19 @@
 import { Box } from "@chakra-ui/react";
 import { Outlet } from "react-router-dom";
-import { Footer, Header } from "../components";
+import { Footer, Header, HideNavbar } from "../components";
 
 const RootLayout = () => {
   return (
     <>
-      <Header />
+      <HideNavbar>
+        <Header />
+      </HideNavbar>
       <Box>
         <Outlet />
       </Box>
-      {/* <Footer /> */}
+      {/*<HideNavbar>
+       <Footer /> 
+    </HideNavbar>*/}
     </>
   );
 };

@@ -26,8 +26,11 @@ import {
 } from "@chakra-ui/icons";
 import { FaBolt } from "react-icons/fa";
 import { BsCalendarCheck } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 
 export default function WithSubnavigation() {
+  const navigate = useNavigate();
+
   const { isOpen, onToggle } = useDisclosure();
   let options = { year: "numeric", month: "long", day: "numeric" };
   let today = new Date().toLocaleDateString("fa-IR", options);
@@ -97,7 +100,7 @@ export default function WithSubnavigation() {
           color={useColorModeValue("gray.600", "white")}
           minH={"60px"}
           alignItems={"center"}
-          py={5}
+          py={{ base: 2, md: 5 }}
         >
           <Flex
             maxW="7xl"
@@ -164,6 +167,7 @@ export default function WithSubnavigation() {
                 rounded="md"
                 size={{ base: "xs", md: "md" }}
                 fontSize={{ base: "13px", md: "23px" }}
+                onClick={() => navigate("/login")}
               >
                 ورود کاربران
               </Button>
@@ -302,6 +306,7 @@ const MobileNavItem = ({ label, children, href }) => {
       >
         <Text
           fontWeight={600}
+          fontSize="12px"
           color={useColorModeValue("gray.600", "gray.200")}
         >
           {label}
@@ -311,8 +316,8 @@ const MobileNavItem = ({ label, children, href }) => {
             as={ChevronDownIcon}
             transition={"all .25s ease-in-out"}
             transform={isOpen ? "rotate(180deg)" : ""}
-            w={6}
-            h={6}
+            w={5}
+            h={5}
           />
         )}
       </Box>

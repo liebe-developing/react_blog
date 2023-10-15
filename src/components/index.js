@@ -4,5 +4,18 @@ import RandomPosts from "./RandomPosts";
 import Categories from "./Categories";
 import RecentPosts from "./RecentPosts";
 import PopularPosts from "./PopularPosts";
+import HideNavbar from "./HideNavbar";
+import Btn from "./Btn";
+import OutlineBtn from "./OutlineBtn";
 
-export { Header, Footer, RandomPosts, Categories, RecentPosts, PopularPosts };
+export {
+  Header,
+  Footer,
+  RandomPosts,
+  Categories,
+  RecentPosts,
+  PopularPosts,
+  HideNavbar,
+  Btn,
+  OutlineBtn,
+};
