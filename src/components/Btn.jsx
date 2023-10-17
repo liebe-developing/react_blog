@@ -18,8 +18,8 @@ const Btn = ({ title, btnFn, hasIcon, Icon, ...rest }) => {
       fontFamily="Casablanca"
       rounded="xl"
       onClick={btnFn}
-      {...rest}
       rightIcon={hasIcon && Icon}
+      {...rest}
     >
       {title}
     </Button>

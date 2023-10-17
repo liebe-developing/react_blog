@@ -15,17 +15,21 @@ import {
   InputGroup,
   InputRightElement,
   Icon,
+  InputLeftElement,
 } from "@chakra-ui/react";
 import DarkModeButton from "../components/DarkModeButton";
 import { Btn, OutlineBtn } from "../components";
 import { IoIosLogIn } from "react-icons/io";
-import { AiOutlineMail } from "react-icons/ai";
+import { AiFillEye, AiFillEyeInvisible, AiOutlineMail } from "react-icons/ai";
 import LoginImage from "../assets/login-image.jpg";
 import DarkLoginImage from "../assets/dark-login-image.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import { BsArrowRightShort } from "react-icons/bs";
+import { useState } from "react";
 
 const Login = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
   const { colorMode, toggleColorMode } = useColorMode();
   const navigate = useNavigate();
 
@@ -48,7 +52,10 @@ const Login = () => {
             بازگشت
           </Link>
           <Flex className="items-center w-full justify-between mb-5">
-            <Heading fontSize={{base: '2xl', md:"4xl"}} fontFamily="casablanca">
+            <Heading
+              fontSize={{ base: "2xl", md: "4xl" }}
+              fontFamily="casablanca"
+            >
               ورود به سایت
             </Heading>
             <DarkModeButton
@@ -95,10 +102,18 @@ const Login = () => {
                   boxShadow: "0 0 1px #22c35e",
                   border: "1px solid #22c35e",
                 }}
-                type={"email"}
-                // onChange={(e) => setSearchTerm(e.target.value)}
+                type={showPassword ? "text" : "password"}
                 placeholder="لطفا گذرواژه خود را وارد نمایید"
               />
+              <InputLeftElement>
+                <Icon
+                  as={showPassword ? AiFillEye : AiFillEyeInvisible}
+                  boxSize={6}
+                  color="gray.600"
+                  cursor="pointer"
+                  onClick={() => setShowPassword((prevState) => !prevState)}
+                />
+              </InputLeftElement>
             </InputGroup>
           </FormControl>
           <Stack spacing={6}>
