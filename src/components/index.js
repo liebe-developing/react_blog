@@ -7,6 +7,7 @@ import PopularPosts from "./PopularPosts";
 import HideNavbar from "./HideNavbar";
 import Btn from "./Btn";
 import OutlineBtn from "./OutlineBtn";
+import PrivateRoute from "./PrivateRoute";
 
 export {
   Header,
@@ -18,4 +19,5 @@ export {
   HideNavbar,
   Btn,
   OutlineBtn,
+  PrivateRoute,
 };

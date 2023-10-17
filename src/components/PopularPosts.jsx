@@ -18,7 +18,7 @@ import { digitsEnToFa } from "@persian-tools/persian-tools";
 
 const PopularPosts = () => {
   return (
-    <Flex
+    <Box
       maxW="7xl"
       mx={"auto"}
       className="flex-col items-center justify-center gap-8 max-sm:px-5 mb-5"
@@ -140,7 +140,7 @@ const PopularPosts = () => {
           ))}
         </Box>
       </Flex>
-    </Flex>
+    </Box>
   );
 };
 

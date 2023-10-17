@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import RootLayout from "./Layout/RootLayout";
-import { ForgotPassword, Home, Login, Register } from "./pages";
+import { ForgotPassword, Home, Login, Profile, Register } from "./pages";
+import { PrivateRoute } from "./components";
 
 export default function App() {
   return (
@@ -10,6 +11,9 @@ export default function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route element={<PrivateRoute />}>
+          <Route path="/profile" element={<Profile />} />
+        </Route>
       </Route>
     </Routes>
   );

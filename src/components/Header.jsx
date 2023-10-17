@@ -14,6 +14,12 @@ import {
   useBreakpointValue,
   useDisclosure,
   useColorMode,
+  Avatar,
+  Menu,
+  MenuButton,
+  MenuList,
+  Image,
+  MenuItem,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import DarkModeButton from "./DarkModeButton";
@@ -23,13 +29,20 @@ import {
   CloseIcon,
   ChevronDownIcon,
   ChevronLeftIcon,
+  EditIcon,
+  SettingsIcon,
 } from "@chakra-ui/icons";
 import { FaBolt } from "react-icons/fa";
 import { BsCalendarCheck } from "react-icons/bs";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { AiOutlinePoweroff } from "react-icons/ai";
 
 export default function WithSubnavigation() {
   const navigate = useNavigate();
+  const { currentUser } = useSelector((state) => state.user);
+
+  console.log(currentUser);
 
   const { isOpen, onToggle } = useDisclosure();
   let options = { year: "numeric", month: "long", day: "numeric" };
@@ -129,13 +142,15 @@ export default function WithSubnavigation() {
               flex={{ base: 1, md: 0 }}
               justify={{ base: "center", md: "start" }}
             >
-              <Text
-                fontSize={{ base: "", md: "30px" }}
-                fontFamily={"casablanca"}
-                color={useColorModeValue("gray.800", "white")}
-              >
-                بلاگ
-              </Text>
+              <Link to="/">
+                <Text
+                  fontSize={{ base: "", md: "30px" }}
+                  fontFamily={"casablanca"}
+                  color={useColorModeValue("gray.800", "white")}
+                >
+                  بلاگ
+                </Text>
+              </Link>
             </Flex>
             <Flex
               display={{ base: "none", md: "flex" }}
@@ -156,22 +171,81 @@ export default function WithSubnavigation() {
                 colorMode={colorMode}
                 toggleColorMode={toggleColorMode}
               />
-              <Button
-                display="flex"
-                alignItems="center"
-                gap={2}
-                colorScheme="whatsapp"
-                _hover={{ opacity: "80%" }}
-                w="fit-content"
-                fontFamily="Casablanca"
-                rounded="md"
-                size={{ base: "xs", md: "md" }}
-                fontSize={{ base: "13px", md: "23px" }}
-                onClick={() => navigate("/login")}
-              >
-                ورود کاربران
-              </Button>
-              ز
+              {currentUser ? (
+                <Menu>
+                  <MenuButton as={"button"}>
+                    <Avatar
+                      src={currentUser.token}
+                      name={currentUser.token}
+                      cursor="pointer"
+                    />
+                  </MenuButton>
+                  <MenuList minWidth="300px">
+                    <Flex className="flex-col items-center justify-center text-center w-full">
+                      <Flex
+                        minH="48px"
+                        w="full"
+                        display="flex"
+                        justifyContent="center"
+                        mb={8}
+                      >
+                        <Avatar
+                          src={currentUser.token}
+                          name={currentUser.token}
+                          cursor="pointer"
+                          size="xl"
+                        />
+                      </Flex>
+                      <Link to="/profile" className="w-full">
+                        <MenuItem
+                          icon={<EditIcon boxSize={5} />}
+                          className={`${useColorModeValue(
+                            "hover:bg-green-50 hover:text-green-500",
+                            "hover:bg-gray-800 hover:text-green-500"
+                          )} hover:transition duration-500 ease-in-out`}
+                        >
+                          ویرایش اطلاعات/پروفایل
+                        </MenuItem>
+                      </Link>
+                      <MenuItem
+                        icon={<SettingsIcon boxSize={5} />}
+                        my={2}
+                        className={`${useColorModeValue(
+                          "hover:bg-green-50 hover:text-green-500",
+                          "hover:bg-gray-800 hover:text-green-500"
+                        )} hover:transition duration-500 ease-in-out`}
+                      >
+                        تنظیمات
+                      </MenuItem>
+                      <MenuItem
+                        icon={<AiOutlinePoweroff className="w-5 h-5" />}
+                        className={`${useColorModeValue(
+                          "hover:bg-red-50 hover:text-red-500",
+                          "hover:bg-gray-800 hover:text-red-500"
+                        )} hover:transition duration-500 ease-in-out`}
+                      >
+                        خروج
+                      </MenuItem>
+                    </Flex>
+                  </MenuList>
+                </Menu>
+              ) : (
+                <Button
+                  display="flex"
+                  alignItems="center"
+                  gap={2}
+                  colorScheme="whatsapp"
+                  _hover={{ opacity: "80%" }}
+                  w="fit-content"
+                  fontFamily="Casablanca"
+                  rounded="md"
+                  size={{ base: "xs", md: "md" }}
+                  fontSize={{ base: "13px", md: "23px" }}
+                  onClick={() => navigate("/login")}
+                >
+                  ورود کاربران
+                </Button>
+              )}
             </Stack>
           </Flex>
         </Flex>
