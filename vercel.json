@@ -1,0 +1,9 @@
+{
+  "rewrites": [
+    {
+      "source": "/api/:path(.*)",
+      "destination": "https://reverent-nightingale-pw4b3ojxq.iran.liara.run/:path"
+    },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}
