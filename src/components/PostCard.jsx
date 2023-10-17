@@ -17,12 +17,17 @@ import { BsCalendarCheck } from "react-icons/bs";
 import { digitsEnToFa } from "@persian-tools/persian-tools";
 
 const PostCard = ({ post }) => {
-  const { img, title, createdAt, creator, category } = post;
+  const { title, status, picture, created_at, category_id } = post;
+  let options = { year: "numeric", month: "long", day: "numeric" };
+  let postCreatedTime = new Date(created_at).toLocaleDateString(
+    "fa-IR",
+    options
+  );
 
   return (
     <Flex className="group sm:hover:brightness-125 hover:transition ease-in-out">
       <Image
-        src={img}
+        src={"https://rtl-demo-getblog.aryazdh.ir/images/food/m2.jpg"}
         alt={title}
         className="sm:brightness-75 w-full h-full group-hover:scale-105 transition duration-500"
       />
@@ -35,12 +40,14 @@ const PostCard = ({ post }) => {
           py={0.5}
           fontSize={{ base: "12px", md: "14px" }}
         >
-          {category}
+          {category_id}
         </Badge>
         <Text
           color={useColorModeValue("white", "gray.300")}
           _hover={{ color: "#22C35E" }}
-          className={"hover:transition duration-300 ease-out font-bold text-center max-w-[280px] max-sm:text-sm"}
+          className={
+            "hover:transition duration-300 ease-out font-bold text-center max-w-[280px] max-sm:text-sm"
+          }
         >
           {title}
         </Text>
@@ -52,20 +59,26 @@ const PostCard = ({ post }) => {
             fontSize={{ base: "10px", md: "12px" }}
           >
             <Icon as={BsCalendarCheck} color="#22C35E" />
-            {digitsEnToFa(createdAt)}
+            {digitsEnToFa(postCreatedTime)}
           </Text>
-          {creator.map((person, idx) => (
-            <Flex key={idx} className="items-center gap-2">
-              <Text
-                color={useColorModeValue("gray.100", "gray.300")}
-                fontSize={{ base: "11px", md: "13px" }}
-                className="font-semibold"
-              >
-                {person.name}
-              </Text>
-              <Avatar size="sm" name={person?.name} src={person?.avatarUrl} />
-            </Flex>
-          ))}
+          {/* {creator.map((person, idx) => ( */}
+          <Flex className="items-center gap-2">
+            <Text
+              color={useColorModeValue("gray.100", "gray.300")}
+              fontSize={{ base: "11px", md: "13px" }}
+              className="font-semibold"
+            >
+              علی رزمحوئی
+            </Text>
+            <Avatar
+              size="sm"
+              name={"Ali Razmjooei"}
+              src={
+                "https://rtl-demo-getblog.aryazdh.ir/images/users/user-1.jpg"
+              }
+            />
+          </Flex>
+          {/* ))} */}
         </Flex>
       </Flex>
     </Flex>

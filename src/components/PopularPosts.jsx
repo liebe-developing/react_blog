@@ -21,10 +21,10 @@ const PopularPosts = () => {
     <Box
       maxW="7xl"
       mx={"auto"}
-      className="flex-col items-center justify-center gap-8 max-sm:px-5 mb-5"
+      className="flex-col items-center justify-center max-sm:px-5 mb-5"
       mb={16}
     >
-      <Heading fontFamily="casablanca" size="lg">
+      <Heading fontFamily="casablanca" size="lg" textAlign="center" mb={8}>
         پست های محبوب
       </Heading>
       <Flex className="sm:items-center max-sm:flex-col max-sm:justify-center max-sm:items-center w-full gap-2 sm:gap-5">

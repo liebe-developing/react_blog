@@ -8,7 +8,7 @@ import "swiper/css/pagination";
 import { RANDOM_POSTS } from "../constants";
 import PostCard from "./PostCard";
 
-const RandomPosts = () => {
+const RandomPosts = ({ posts }) => {
   return (
     <Swiper
       grabCursor={true}
@@ -38,7 +38,7 @@ const RandomPosts = () => {
       }}
       modules={[Navigation]}
     >
-      {RANDOM_POSTS.map((post, index) => (
+      {posts?.map((post, index) => (
         <SwiperSlide key={index}>
           <PostCard post={post} />
         </SwiperSlide>

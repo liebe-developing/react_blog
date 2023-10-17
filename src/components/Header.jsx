@@ -42,8 +42,6 @@ export default function WithSubnavigation() {
   const navigate = useNavigate();
   const { currentUser } = useSelector((state) => state.user);
 
-  console.log(currentUser);
-
   const { isOpen, onToggle } = useDisclosure();
   let options = { year: "numeric", month: "long", day: "numeric" };
   let today = new Date().toLocaleDateString("fa-IR", options);

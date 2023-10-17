@@ -29,13 +29,15 @@ import {
 import LoginImage from "../assets/login-image.jpg";
 import DarkLoginImage from "../assets/dark-login-image.jpg";
 import { BsArrowRightShort } from "react-icons/bs";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import { useSelector } from "react-redux";
 
 const Register = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const navigate = useNavigate();
+  const { currentUser } = useSelector((state) => state.user);
 
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
@@ -80,6 +82,10 @@ const Register = () => {
       setError(true);
     }
   };
+
+  if (currentUser) {
+    return <Navigate to="/" />;
+  }
 
   return (
     <>

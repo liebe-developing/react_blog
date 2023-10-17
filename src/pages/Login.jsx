@@ -23,7 +23,7 @@ import { IoIosLogIn } from "react-icons/io";
 import { AiFillEye, AiFillEyeInvisible, AiOutlineMail } from "react-icons/ai";
 import LoginImage from "../assets/login-image.jpg";
 import DarkLoginImage from "../assets/dark-login-image.jpg";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, redirect, useNavigate } from "react-router-dom";
 import { BsArrowRightShort } from "react-icons/bs";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -38,7 +38,8 @@ const Login = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { loading, error } = useSelector((state) => state.user);
+  const { loading } = useSelector((state) => state.user);
+  const { currentUser } = useSelector((state) => state.user);
 
   const [showPassword, setShowPassword] = useState(false);
   const [formData, setFormData] = useState({
@@ -85,6 +86,10 @@ const Login = () => {
       dispatch(signInFailure(error));
     }
   };
+
+  if (currentUser) {
+    return <Navigate to="/" />;
+  }
 
   return (
     <Stack
@@ -201,10 +206,10 @@ const Login = () => {
           </form>
           {/* {error && (
             <p
-              className="text-red-600 mt-5 bg-red-200 border-r-4 border-r-red-600
-         p-3 rounded"
+            className="text-red-600 mt-5 bg-red-200 border-r-4 border-r-red-600
+            p-3 rounded"
             >
-              ایمیل یا گذرواژه اشتباه می‌باشد.
+            ایمیل یا گذرواژه اشتباه می‌باشد.
             </p>
           )} */}
           <section className="flex items-center justify-center w-full gap-5 my-5">

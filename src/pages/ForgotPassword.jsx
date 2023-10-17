@@ -1,8 +1,5 @@
 import {
-  Button,
-  Checkbox,
   Flex,
-  Text,
   FormControl,
   FormLabel,
   Heading,
@@ -19,17 +16,21 @@ import {
 } from "@chakra-ui/react";
 import DarkModeButton from "../components/DarkModeButton";
 import { Btn, OutlineBtn } from "../components";
-import { IoIosLogIn } from "react-icons/io";
 import { AiOutlineMail } from "react-icons/ai";
 import LoginImage from "../assets/login-image.jpg";
 import DarkLoginImage from "../assets/dark-login-image.jpg";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { BsArrowRightShort } from "react-icons/bs";
+import { useSelector } from "react-redux";
 
 const ForgotPassword = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const navigate = useNavigate();
+  const { currentUser } = useSelector((state) => state.user);
 
+  if (currentUser) {
+    return <Navigate to="/" />;
+  }
   return (
     <Stack
       minH={"100vh"}

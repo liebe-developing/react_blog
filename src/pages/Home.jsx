@@ -3,14 +3,14 @@ import {
   Categories,
   PopularPosts,
   RandomPosts,
-  RecentPosts,
+  // RecentPosts,
 } from "../components";
 
-const Home = () => {
+const Home = ({ posts, categories }) => {
   return (
     <Box>
-      <RandomPosts />
-      <Categories />
+      <RandomPosts posts={posts} />
+      <Categories categories={categories} />
       {/* <RecentPosts /> */}
       <PopularPosts />
     </Box>
