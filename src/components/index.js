@@ -8,6 +8,7 @@ import HideNavbar from "./HideNavbar";
 import Btn from "./Btn";
 import OutlineBtn from "./OutlineBtn";
 import PrivateRoute from "./PrivateRoute";
+import LoadingSpinner from "./LoadingSpinner";
 
 export {
   Header,
@@ -20,4 +21,5 @@ export {
   Btn,
   OutlineBtn,
   PrivateRoute,
+  LoadingSpinner,
 };
