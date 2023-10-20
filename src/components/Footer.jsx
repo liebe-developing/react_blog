@@ -15,7 +15,7 @@ export const SocialIcons = ({ icon }) => {
   return (
     <Icon
       as={icon}
-      boxSize={7}
+      boxSize={{ base: 6, md: 7 }}
       p={1}
       _hover={{
         bg: useColorModeValue("#90EDB3", "#90EDB3"),
@@ -39,7 +39,7 @@ const Footer = () => {
       <Flex
         maxW="7xl"
         mx={"auto"}
-        className="justify-between w-full items-center"
+        className="justify-between w-full items-center flex-col sm:flex-row max-sm:gap-5 my-3"
       >
         <Flex
           gap={2}
@@ -49,28 +49,28 @@ const Footer = () => {
         >
           <Text>ساخته شده با</Text>
           <AiFillHeart color="red" />
-          <Text>
+          <Text className="flex items-center">
             توسط
-            <Link
-              target="_blank"
+            <Text
+              onClick={() => window.open("https://t.me/alirazmjue", "_blank")}
               style={{ textDecoration: "none" }}
               _hover={{ opacity: "80%" }}
               mr={2}
-              href={"#"}
+              cursor="pointer"
             >
               {" "}
               علی
-            </Link>{" "}
-            و{" "}
-            <Link
-              target="_blank"
+            </Text>{" "}
+            <span className="mx-2">و</span>
+            <Text
+              onClick={() => window.open("https://t.me/LuaXDD", "_blank")}
               style={{ textDecoration: "none" }}
               _hover={{ opacity: "80%" }}
+              cursor="pointer"
               mr={2}
-              href={"#"}
             >
               دنی
-            </Link>
+            </Text>
           </Text>
         </Flex>
 

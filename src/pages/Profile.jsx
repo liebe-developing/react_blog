@@ -80,20 +80,24 @@ const Profile = () => {
       <Flex
         bgColor={useColorModeValue("gray.100", "gray.800")}
         className="justify-center items-center flex-col gap-6 rounded-xl p-10"
-        maxW="7xl"
-        mx="auto"
       >
-        <Heading fontFamily="casablanca" size="lg" textAlign="center">
+        <Heading
+          fontFamily="casablanca"
+          size={{ base: "md", md: "lg" }}
+          textAlign="center"
+        >
           پروفایل
         </Heading>
         <Avatar
           src={currentUser.profilePicture}
           alt={`${currentUser.username} Profile`}
-          size="xl"
+          size={{ base: "lg", md: "xl" }}
         />
         <form onSubmit={handleSubmit} className="w-full">
           <FormControl isRequired>
-            <FormLabel>گذرواژه فعلی</FormLabel>
+            <FormLabel fontSize={{ base: "12px", md: "16px" }}>
+              گذرواژه فعلی
+            </FormLabel>
             <InputGroup>
               <InputRightElement>
                 <Icon as={AiOutlineMail} boxSize={5} color="gray.600" />
@@ -103,7 +107,7 @@ const Profile = () => {
                 className={`${useColorModeValue(
                   "text-gray-600",
                   "text-gray-300"
-                )} placeholder:text-gray-500 text-sm placeholder:text-sm placeholder:font-casablanca`}
+                )} placeholder:text-gray-500 text-sm max-sm:placeholder:text-[10px] placeholder:font-casablanca`}
                 _focusVisible={{
                   boxShadow: "0 0 1px #22c35e",
                   border: "1px solid #22c35e",
@@ -127,7 +131,9 @@ const Profile = () => {
             </InputGroup>
           </FormControl>
           <FormControl isRequired mt={5}>
-            <FormLabel>گذرواژه جدید</FormLabel>
+            <FormLabel fontSize={{ base: "12px", md: "16px" }}>
+              گذرواژه جدید
+            </FormLabel>
             <InputGroup>
               <InputRightElement>
                 <Icon as={AiOutlineMail} boxSize={5} color="gray.600" />
@@ -137,7 +143,7 @@ const Profile = () => {
                 className={`${useColorModeValue(
                   "text-gray-600",
                   "text-gray-300"
-                )} placeholder:text-gray-500 text-sm placeholder:text-sm placeholder:font-casablanca`}
+                )} placeholder:text-gray-500 text-sm max-sm:placeholder:text-[10px] placeholder:font-casablanca`}
                 _focusVisible={{
                   boxShadow: "0 0 1px #22c35e",
                   border: "1px solid #22c35e",
@@ -167,8 +173,13 @@ const Profile = () => {
             mt={10}
           />
         </form>
-
-        <Heading fontFamily="casablanca" size="lg" textAlign="center" mt={20}>
+      </Flex>
+      <Flex
+        bgColor={useColorModeValue("gray.100", "gray.800")}
+        mt={6}
+        className="justify-right items-start flex-col gap-6 rounded-xl p-10"
+      >
+        <Heading fontFamily="casablanca" size="lg">
           لیست علاقه مندی‌ ها
         </Heading>
       </Flex>

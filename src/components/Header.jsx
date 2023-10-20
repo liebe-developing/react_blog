@@ -183,6 +183,7 @@ export default function WithSubnavigation() {
                       src={currentUser.token}
                       name={currentUser.token}
                       cursor="pointer"
+                      size={{ base: "sm", md: "md" }}
                     />
                   </MenuButton>
                   <MenuList minWidth="300px">
