@@ -22,11 +22,14 @@ import DarkLoginImage from "../assets/dark-login-image.jpg";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { BsArrowRightShort } from "react-icons/bs";
 import { useSelector } from "react-redux";
+import { useState } from "react";
 
 const ForgotPassword = () => {
   const { colorMode, toggleColorMode } = useColorMode();
   const navigate = useNavigate();
   const { currentUser } = useSelector((state) => state.user);
+
+  const [email, setEmail] = useState("");
 
   if (currentUser) {
     return <Navigate to="/" />;
@@ -78,7 +81,9 @@ const ForgotPassword = () => {
                   border: "1px solid #22c35e",
                 }}
                 type={"email"}
-                // onChange={(e) => setSearchTerm(e.target.value)}
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="لطفا ایمیل خود را وارد نمایید"
               />
             </InputGroup>

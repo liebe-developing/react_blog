@@ -37,6 +37,8 @@ import { BsCalendarCheck } from "react-icons/bs";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { AiOutlinePoweroff } from "react-icons/ai";
+import toast from "react-hot-toast";
+import sessionStorage from "redux-persist/es/storage/session";
 
 export default function WithSubnavigation() {
   const navigate = useNavigate();
@@ -65,6 +67,11 @@ export default function WithSubnavigation() {
   }, []);
 
   const scrolledBg = useColorModeValue("#ffffffc7", "rgb(23, 25, 35, 0.8)");
+
+  const signOut = () => {
+    window.localStorage.clear();
+    window.location.href = "/login";
+  };
 
   return (
     <>
@@ -179,7 +186,7 @@ export default function WithSubnavigation() {
                     />
                   </MenuButton>
                   <MenuList minWidth="300px">
-                    <Flex className="flex-col items-center justify-center text-center w-full">
+                    <Flex className="flex-col items-center justify-center text-center w-full text-sm">
                       <Flex
                         minH="48px"
                         w="full"
@@ -196,7 +203,7 @@ export default function WithSubnavigation() {
                       </Flex>
                       <Link to="/profile" className="w-full">
                         <MenuItem
-                          icon={<EditIcon boxSize={5} />}
+                          icon={<EditIcon width="18px" height="18px" />}
                           className={`${useColorModeValue(
                             "hover:bg-green-50 hover:text-green-500",
                             "hover:bg-gray-800 hover:text-green-500"
@@ -206,7 +213,7 @@ export default function WithSubnavigation() {
                         </MenuItem>
                       </Link>
                       <MenuItem
-                        icon={<SettingsIcon boxSize={5} />}
+                        icon={<SettingsIcon width="18px" height="18px" />}
                         my={2}
                         className={`${useColorModeValue(
                           "hover:bg-green-50 hover:text-green-500",
@@ -216,11 +223,15 @@ export default function WithSubnavigation() {
                         تنظیمات
                       </MenuItem>
                       <MenuItem
-                        icon={<AiOutlinePoweroff className="w-5 h-5" />}
+                        icon={
+                          <AiOutlinePoweroff className="w-[18px] h-[18px]" />
+                        }
                         className={`${useColorModeValue(
                           "hover:bg-red-50 hover:text-red-500",
                           "hover:bg-gray-800 hover:text-red-500"
                         )} hover:transition duration-500 ease-in-out`}
+                        onClick={signOut}
+                        type="button"
                       >
                         خروج
                       </MenuItem>

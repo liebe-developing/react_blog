@@ -11,9 +11,9 @@ const RootLayout = () => {
       <Box>
         <Outlet />
       </Box>
-      {/*<HideNavbar>
-       <Footer /> 
-    </HideNavbar>*/}
+      <HideNavbar>
+        <Footer />
+      </HideNavbar>
     </>
   );
 };

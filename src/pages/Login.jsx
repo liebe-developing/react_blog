@@ -33,6 +33,7 @@ import {
   signInSuccess,
 } from "../redux/user/userSlice";
 import toast from "react-hot-toast";
+import bcrypt from "bcryptjs";
 
 const Login = () => {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -73,14 +74,13 @@ const Login = () => {
         body: JSON.stringify(formData),
       });
       const data = await res.json();
-
       if (data.error === "The provided credentials are incorrect") {
         dispatch(signInFailure(data));
         toast.error("ایمیل یا گذرواژه اشتباه می‌باشد.");
         return;
       }
 
-      dispatch(signInSuccess(data));
+      dispatch(signInSuccess(data.token));
       navigate("/");
     } catch (error) {
       dispatch(signInFailure(error));

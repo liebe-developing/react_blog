@@ -1,12 +1,11 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Navigation } from "swiper/modules";
-import SwiperButton from "./SwiperButton";
+import SwiperButton from "../SwiperButton";
 
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { RANDOM_POSTS } from "../constants";
-import PostCard from "./PostCard";
+import RandomPostCard from "./RandomPostCard";
 
 const RandomPosts = ({ posts }) => {
   return (
@@ -40,7 +39,7 @@ const RandomPosts = ({ posts }) => {
     >
       {posts?.map((post, index) => (
         <SwiperSlide key={index}>
-          <PostCard post={post} />
+          <RandomPostCard post={post} />
         </SwiperSlide>
       ))}
       <SwiperButton />

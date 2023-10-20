@@ -11,8 +11,8 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import React from "react";
-import { RANDOM_POSTS } from "../constants";
-import PostCard from "./PostCard";
+import { RANDOM_POSTS } from "../../constants";
+import PostCard from "../RandomPosts/RandomPostCard";
 import { BsCalendarCheck } from "react-icons/bs";
 import { digitsEnToFa } from "@persian-tools/persian-tools";
 
