@@ -180,11 +180,11 @@ export default function WithSubnavigation() {
               {currentUser ? (
                 <Flex className="items-center gap-2 min-w-fit">
                   <Flex className="flex-col gap-0.5">
-                    <Text className="font-semibold text-[10px] sm:text-[14px]">
+                    <Text className="font-semibold text-[8px] text-left sm:text-[14px]">
                       {currentUser?.user?.name}
                     </Text>
                     <Text
-                      className="text-left text-[10px] sm:text-[14px]"
+                      className="text-left text-[8.5px] sm:text-[14px]"
                       color={useColorModeValue("gray.500", "gray.400")}
                     >
                       alirazmjooei

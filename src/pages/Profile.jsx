@@ -114,6 +114,7 @@ const Profile = () => {
                   border: "1px solid #22c35e",
                 }}
                 type={"text"}
+                fontSize={{ base: "13px", md: "16px" }}
                 placeholder="لطفا نام خود را وارد نمایید"
                 id="name"
                 value={name}
@@ -132,12 +133,13 @@ const Profile = () => {
                 className={`${useColorModeValue(
                   "text-gray-600",
                   "text-gray-300"
-                )} placeholder:text-gray-500 text-sm placeholder:text-sm placeholder:font-casablanca`}
+                )} placeholder:text-gray-500 text-sm max-sm:placeholder:text-[10px] placeholder:font-casablanca`}
                 _focusVisible={{
                   boxShadow: "0 0 1px #22c35e",
                   border: "1px solid #22c35e",
                 }}
                 type={"email"}
+                fontSize={{ base: "13px", md: "16px" }}
                 id="email"
                 value={email}
                 onChange={handleChange}
@@ -165,6 +167,7 @@ const Profile = () => {
                 }}
                 type={showOldPassword ? "text" : "password"}
                 id="oldPassword"
+                fontSize={{ base: "13px", md: "16px" }}
                 value={oldPassword}
                 onChange={handleChange}
                 placeholder="لطفا گذرواژه فعلی خود را وارد نمایید"
@@ -180,7 +183,7 @@ const Profile = () => {
                 />
               </InputLeftElement>
             </InputGroup>
-            <FormHelperText fontSize="11px">
+            <FormHelperText fontSize={{ base: "9px", md: "11px" }}>
               اگر قصد تغییر ندارید خالی بگذارید
             </FormHelperText>
           </FormControl>
@@ -204,6 +207,7 @@ const Profile = () => {
                 }}
                 type={showNewPassword ? "text" : "password"}
                 id="newPassword"
+                fontSize={{ base: "13px", md: "16px" }}
                 value={newPassword}
                 onChange={handleChange}
                 placeholder="لطفا گذرواژه جدید خود را وارد نمایید"
@@ -219,7 +223,7 @@ const Profile = () => {
                 />
               </InputLeftElement>
             </InputGroup>
-            <FormHelperText fontSize="11px">
+            <FormHelperText fontSize={{ base: "9px", md: "11px" }}>
               اگر قصد تغییر ندارید خالی بگذارید
             </FormHelperText>
           </FormControl>
