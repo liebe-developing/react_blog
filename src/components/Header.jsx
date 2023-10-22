@@ -43,6 +43,7 @@ import sessionStorage from "redux-persist/es/storage/session";
 export default function WithSubnavigation() {
   const navigate = useNavigate();
   const { currentUser } = useSelector((state) => state.user);
+  console.log(currentUser);
 
   const { isOpen, onToggle } = useDisclosure();
   let options = { year: "numeric", month: "long", day: "numeric" };
@@ -177,68 +178,90 @@ export default function WithSubnavigation() {
                 toggleColorMode={toggleColorMode}
               />
               {currentUser ? (
-                <Menu>
-                  <MenuButton as={"button"}>
-                    <Avatar
-                      src={currentUser.token}
-                      name={currentUser.token}
-                      cursor="pointer"
-                      size={{ base: "sm", md: "md" }}
-                    />
-                  </MenuButton>
-                  <MenuList minWidth="300px">
-                    <Flex className="flex-col items-center justify-center text-center w-full text-sm">
-                      <Flex
-                        minH="48px"
-                        w="full"
-                        display="flex"
-                        justifyContent="center"
-                        mb={8}
-                      >
-                        <Avatar
-                          src={currentUser.token}
-                          name={currentUser.token}
-                          cursor="pointer"
-                          size="xl"
-                        />
-                      </Flex>
-                      <Link to="/profile" className="w-full">
+                <Flex className="items-center gap-2 min-w-fit">
+                  <Flex className="flex-col gap-0.5">
+                    <Text className="font-semibold text-[10px] sm:text-[14px]">
+                      {currentUser?.user?.name}
+                    </Text>
+                    <Text
+                      className="text-left text-[10px] sm:text-[14px]"
+                      color={useColorModeValue("gray.500", "gray.400")}
+                    >
+                      alirazmjooei
+                    </Text>
+                  </Flex>
+                  <Menu>
+                    <MenuButton as={"button"}>
+                      <Avatar
+                        src={currentUser.token}
+                        name={currentUser.token}
+                        cursor="pointer"
+                        size={{ base: "sm", md: "md" }}
+                      />
+                    </MenuButton>
+                    <MenuList minWidth="300px">
+                      <Flex className="flex-col items-center justify-center text-center w-full text-sm">
+                        <Flex
+                          minH="48px"
+                          w="full"
+                          display="flex"
+                          justifyContent="center"
+                          mb={5}
+                          flexDir="column"
+                          alignItems="center"
+                          gap={3}
+                        >
+                          <Avatar
+                            src={currentUser.token}
+                            name={currentUser.token}
+                            cursor="pointer"
+                            size="xl"
+                          />
+                          <Text
+                            className="text-[10px] sm:text-[15px]"
+                            noOfLines={1}
+                          >
+                            {currentUser?.user?.email}
+                          </Text>
+                        </Flex>
+                        <Link to="/profile" className="w-full">
+                          <MenuItem
+                            icon={<EditIcon width="18px" height="18px" />}
+                            className={`${useColorModeValue(
+                              "hover:bg-green-50 hover:text-green-500",
+                              "hover:bg-gray-800 hover:text-green-500"
+                            )} hover:transition duration-500 ease-in-out`}
+                          >
+                            ویرایش اطلاعات/پروفایل
+                          </MenuItem>
+                        </Link>
                         <MenuItem
-                          icon={<EditIcon width="18px" height="18px" />}
+                          icon={<SettingsIcon width="18px" height="18px" />}
+                          my={2}
                           className={`${useColorModeValue(
                             "hover:bg-green-50 hover:text-green-500",
                             "hover:bg-gray-800 hover:text-green-500"
                           )} hover:transition duration-500 ease-in-out`}
                         >
-                          ویرایش اطلاعات/پروفایل
+                          تنظیمات
                         </MenuItem>
-                      </Link>
-                      <MenuItem
-                        icon={<SettingsIcon width="18px" height="18px" />}
-                        my={2}
-                        className={`${useColorModeValue(
-                          "hover:bg-green-50 hover:text-green-500",
-                          "hover:bg-gray-800 hover:text-green-500"
-                        )} hover:transition duration-500 ease-in-out`}
-                      >
-                        تنظیمات
-                      </MenuItem>
-                      <MenuItem
-                        icon={
-                          <AiOutlinePoweroff className="w-[18px] h-[18px]" />
-                        }
-                        className={`${useColorModeValue(
-                          "hover:bg-red-50 hover:text-red-500",
-                          "hover:bg-gray-800 hover:text-red-500"
-                        )} hover:transition duration-500 ease-in-out`}
-                        onClick={signOut}
-                        type="button"
-                      >
-                        خروج
-                      </MenuItem>
-                    </Flex>
-                  </MenuList>
-                </Menu>
+                        <MenuItem
+                          icon={
+                            <AiOutlinePoweroff className="w-[18px] h-[18px]" />
+                          }
+                          className={`${useColorModeValue(
+                            "hover:bg-red-50 hover:text-red-500",
+                            "hover:bg-gray-800 hover:text-red-500"
+                          )} hover:transition duration-500 ease-in-out`}
+                          onClick={signOut}
+                          type="button"
+                        >
+                          خروج
+                        </MenuItem>
+                      </Flex>
+                    </MenuList>
+                  </Menu>
+                </Flex>
               ) : (
                 <Button
                   display="flex"

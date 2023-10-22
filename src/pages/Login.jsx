@@ -74,6 +74,7 @@ const Login = () => {
         body: JSON.stringify(formData),
       });
       const data = await res.json();
+      console.log(data);
       if (data.error === "The provided credentials are incorrect") {
         dispatch(signInFailure(data));
         toast.error("ایمیل یا گذرواژه اشتباه می‌باشد.");
@@ -90,7 +91,6 @@ const Login = () => {
   if (currentUser) {
     return <Navigate to="/" />;
   }
-
   return (
     <Stack
       minH={"100vh"}

@@ -3,6 +3,7 @@ import {
   Box,
   Flex,
   FormControl,
+  FormHelperText,
   FormLabel,
   Heading,
   Icon,
@@ -31,11 +32,13 @@ const Profile = () => {
   const { loading } = useSelector((state) => state.user);
 
   const [formData, setFormData] = useState({
+    name: currentUser?.user?.name || "",
+    email: currentUser?.user?.email || "",
     oldPassword: "",
     newPassword: "",
   });
 
-  const { oldPassword, newPassword } = formData;
+  const { name, email, oldPassword, newPassword } = formData;
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -95,6 +98,54 @@ const Profile = () => {
         />
         <form onSubmit={handleSubmit} className="w-full">
           <FormControl isRequired>
+            <FormLabel>نام</FormLabel>
+            <InputGroup>
+              <InputRightElement>
+                <Icon as={AiOutlineUser} boxSize={5} color="gray.600" />
+              </InputRightElement>
+              <Input
+                pr="2.2rem"
+                className={`${useColorModeValue(
+                  "text-gray-600",
+                  "text-gray-300"
+                )} placeholder:text-gray-500 text-sm placeholder:text-sm placeholder:font-casablanca`}
+                _focusVisible={{
+                  boxShadow: "0 0 1px #22c35e",
+                  border: "1px solid #22c35e",
+                }}
+                type={"text"}
+                placeholder="لطفا نام خود را وارد نمایید"
+                id="name"
+                value={name}
+                onChange={handleChange}
+              />
+            </InputGroup>
+          </FormControl>
+          <FormControl isRequired my={6}>
+            <FormLabel>ایمیل</FormLabel>
+            <InputGroup>
+              <InputRightElement>
+                <Icon as={AiOutlineMail} boxSize={5} color="gray.600" />
+              </InputRightElement>
+              <Input
+                pr="2.2rem"
+                className={`${useColorModeValue(
+                  "text-gray-600",
+                  "text-gray-300"
+                )} placeholder:text-gray-500 text-sm placeholder:text-sm placeholder:font-casablanca`}
+                _focusVisible={{
+                  boxShadow: "0 0 1px #22c35e",
+                  border: "1px solid #22c35e",
+                }}
+                type={"email"}
+                id="email"
+                value={email}
+                onChange={handleChange}
+                placeholder="لطفا ایمیل خود را وارد نمایید"
+              />
+            </InputGroup>
+          </FormControl>
+          <FormControl isRequired>
             <FormLabel fontSize={{ base: "12px", md: "16px" }}>
               گذرواژه فعلی
             </FormLabel>
@@ -129,8 +180,11 @@ const Profile = () => {
                 />
               </InputLeftElement>
             </InputGroup>
+            <FormHelperText fontSize="11px">
+              اگر قصد تغییر ندارید خالی بگذارید
+            </FormHelperText>
           </FormControl>
-          <FormControl isRequired mt={5}>
+          <FormControl isRequired mt={6}>
             <FormLabel fontSize={{ base: "12px", md: "16px" }}>
               گذرواژه جدید
             </FormLabel>
@@ -165,9 +219,12 @@ const Profile = () => {
                 />
               </InputLeftElement>
             </InputGroup>
+            <FormHelperText fontSize="11px">
+              اگر قصد تغییر ندارید خالی بگذارید
+            </FormHelperText>
           </FormControl>
           <Btn
-            title={loading ? "ارسال ..." : "تغییر گذرواژه"}
+            title={loading ? "در حال بروزرسانی ..." : "بروزرسانی"}
             type="submit"
             w={{ base: "full", md: "fit-content" }}
             mt={10}
